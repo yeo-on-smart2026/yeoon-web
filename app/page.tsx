@@ -1,65 +1,95 @@
 import Image from "next/image";
+import Link from "next/link";
+import PageFrame from "@/components/PageFrame";
+import {
+  DECEASED_NAME,
+  BIRTH_DATE,
+  DEATH_DATE,
+  TRIBUTE_QUOTE,
+} from "@/mock/profile";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <PageFrame>
+        {/* Header */}
+        <div className="absolute left-1/2 top-[11.5cqh] flex -translate-x-1/2 flex-col items-center text-center text-[#6b4a26]">
+          <div className="flex items-baseline gap-[1.2cqw] font-[family-name:var(--font-gowun-batang)]">
+            <span className="text-[3.7cqw]">故</span>
+            <span className="text-[6.6cqw] font-bold text-[#7a5322]">
+              {DECEASED_NAME}
+            </span>
+            <span className="text-[3.7cqw]">님</span>
+          </div>
+          <p className="mt-[1.4cqh] text-[2.6cqw] tracking-wide text-[#9c7b4a]">
+            {BIRTH_DATE} - {DEATH_DATE}
+          </p>
+          <p className="mt-[3cqh] flex items-baseline gap-[0.6cqw] text-[2.8cqw] text-[#5b4636]">
+            <span className="text-[4.4cqw] leading-none text-[#a9825a]">&ldquo;</span>
+            <span>{TRIBUTE_QUOTE}</span>
+            <span className="text-[4.4cqw] leading-none text-[#a9825a]">&rdquo;</span>
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Plaque */}
+        <div className="absolute left-[62%] top-[33cqh] aspect-[1828/1856] w-[77cqw] -translate-x-1/2">
+          <Image src="/memorialPlaque.png" alt="" fill className="object-contain" />
+          <div className="absolute left-[17%] top-[14%] flex w-[36%] flex-col items-center font-[family-name:var(--font-gowun-batang)] text-[#3a2513]">
+            <span className="text-[6cqw] font-bold leading-none">故</span>
+            {[...DECEASED_NAME].map((char, i) => (
+              <span key={i} className="mt-[2%] text-[9.6cqw] font-bold leading-none">
+                {char}
+              </span>
+            ))}
+          </div>
         </div>
-      </main>
-    </div>
+
+        {/* Actions */}
+        <div className="absolute bottom-[7.5cqh] left-1/2 flex -translate-x-1/2 gap-[5cqw]">
+          <Link
+            href="/memories"
+            className="flex items-center whitespace-nowrap gap-[1cqw] rounded-2xl border border-[#d3ba93] bg-white px-[5cqw] py-[1.3cqh] text-[2.7cqw] font-medium text-[#8a6a3d] shadow-sm"
+          >
+            <ImageIcon className="h-[3.1cqw] w-[3.1cqw]" />
+            추억 만나기
+          </Link>
+          <button
+            type="button"
+            className="flex items-center whitespace-nowrap gap-[1cqw] rounded-2xl border border-[#d3ba93] bg-white px-[5cqw] py-[1.3cqh] text-[2.7cqw] font-medium text-[#8a6a3d] shadow-sm"
+          >
+            <MessageIcon className="h-[3.1cqw] w-[3.1cqw]" />
+            추모 메세지
+          </button>
+        </div>
+    </PageFrame>
+  );
+}
+
+function ImageIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      className={className}
+    >
+      <rect x="3" y="4" width="18" height="16" rx="2.5" />
+      <circle cx="8.5" cy="9.5" r="1.5" />
+      <path d="M21 15.5 16.5 11 7 20" />
+    </svg>
+  );
+}
+
+function MessageIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      className={className}
+    >
+      <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8A2.5 2.5 0 0 1 17.5 16H10l-4.5 4v-4H6.5A2.5 2.5 0 0 1 4 13.5Z" />
+    </svg>
   );
 }
