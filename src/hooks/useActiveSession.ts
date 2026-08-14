@@ -26,6 +26,7 @@ export function useActiveSession() {
           filter: "id=eq.kiosk-01",
         },
         (payload) => {
+          console.log("[useActiveSession] UPDATE 수신:", payload.new);
           const newRow = payload.new as ActiveSessionRow;
           if (lastProfileId.current === newRow.profile_id) return;
           lastProfileId.current = newRow.profile_id;
@@ -33,7 +34,9 @@ export function useActiveSession() {
           router.refresh();
         },
       )
-      .subscribe();
+      .subscribe((status, err) => {
+        console.log("[useActiveSession] 구독 상태:", status, err ?? "");
+      });
 
     return () => {
       supabase.removeChannel(channel);
