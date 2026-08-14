@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Gowun_Batang } from "next/font/google";
+import SessionWatcher from "@/components/SessionWatcher";
+import KeyboardNavWatcher from "@/components/KeyboardNavWatcher";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -33,7 +35,11 @@ export default function RootLayout({
       lang="ko"
       className={`${geistSans.variable} ${geistMono.variable} ${gowunBatang.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <SessionWatcher />
+        <KeyboardNavWatcher />
+        {children}
+      </body>
     </html>
   );
 }

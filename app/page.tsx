@@ -2,14 +2,22 @@ import Image from "next/image";
 import Link from "next/link";
 import PageFrame from "@/components/PageFrame";
 import SplashScreen from "@/components/SplashScreen";
-import {
-  DECEASED_NAME,
-  BIRTH_DATE,
-  DEATH_DATE,
-  TRIBUTE_QUOTE,
-} from "@/mock/profile";
+import WaitingScreen from "@/components/WaitingScreen";
+import { getActiveProfile } from "@/lib/queries";
 
-export default function Home() {
+export default async function Home() {
+  const profile = await getActiveProfile();
+
+  if (!profile) {
+    return (
+      <PageFrame>
+        <WaitingScreen />
+      </PageFrame>
+    );
+  }
+
+  const { name, birth_date, death_date, quote } = profile;
+
   return (
     <PageFrame>
         <SplashScreen />
@@ -19,16 +27,16 @@ export default function Home() {
           <div className="flex items-baseline gap-[1.2cqw] font-[family-name:var(--font-gowun-batang)]">
             <span className="text-[3.7cqw]">故</span>
             <span className="text-[6.6cqw] font-bold text-[#7a5322]">
-              {DECEASED_NAME}
+              {name}
             </span>
             <span className="text-[3.7cqw]">님</span>
           </div>
           <p className="mt-[1.4cqh] text-[2.6cqw] tracking-wide text-[#9c7b4a]">
-            {BIRTH_DATE} - {DEATH_DATE}
+            {birth_date} - {death_date}
           </p>
           <p className="mt-[3cqh] flex items-baseline gap-[0.6cqw] text-[2.8cqw] text-[#5b4636]">
             <span className="text-[4.4cqw] leading-none text-[#a9825a]">&ldquo;</span>
-            <span>{TRIBUTE_QUOTE}</span>
+            <span>{quote}</span>
             <span className="text-[4.4cqw] leading-none text-[#a9825a]">&rdquo;</span>
           </p>
         </div>
@@ -38,7 +46,7 @@ export default function Home() {
           <Image src="/memorialPlaque.png" alt="" fill className="object-contain" />
           <div className="absolute left-[17%] top-[14%] flex w-[36%] flex-col items-center font-[family-name:var(--font-gowun-batang)] text-[#3a2513]">
             <span className="text-[6cqw] font-bold leading-none">故</span>
-            {[...DECEASED_NAME].map((char, i) => (
+            {[...name].map((char, i) => (
               <span key={i} className="mt-[2%] text-[9.6cqw] font-bold leading-none">
                 {char}
               </span>
@@ -50,6 +58,7 @@ export default function Home() {
         <div className="absolute bottom-[7.5cqh] left-1/2 flex -translate-x-1/2 gap-[5cqw]">
           <Link
             href="/memories"
+            data-nav-item
             className="flex items-center whitespace-nowrap gap-[1cqw] rounded-2xl border border-[#d3ba93] bg-white px-[5cqw] py-[1.3cqh] text-[2.7cqw] font-medium text-[#8a6a3d] shadow-sm"
           >
             <ImageIcon className="h-[3.1cqw] w-[3.1cqw]" />
@@ -57,6 +66,7 @@ export default function Home() {
           </Link>
           <Link
             href="/memorial"
+            data-nav-item
             className="flex items-center whitespace-nowrap gap-[1cqw] rounded-2xl border border-[#d3ba93] bg-white px-[5cqw] py-[1.3cqh] text-[2.7cqw] font-medium text-[#8a6a3d] shadow-sm"
           >
             <MessageIcon className="h-[3.1cqw] w-[3.1cqw]" />

@@ -1,9 +1,14 @@
 import Image from "next/image";
+import { redirect } from "next/navigation";
 import PageFrame from "@/components/PageFrame";
-import { DECEASED_NAME, BIRTH_DATE, DEATH_DATE } from "@/mock/profile";
-import { MEMORIES } from "@/mock/memories";
+import { getActiveProfile, getMemories } from "@/lib/queries";
 
-export default function MemoriesPage() {
+export default async function MemoriesPage() {
+  const profile = await getActiveProfile();
+  if (!profile) redirect("/");
+
+  const memories = await getMemories(profile.id);
+
   return (
     <PageFrame>
         {/* Header */}
@@ -15,21 +20,23 @@ export default function MemoriesPage() {
             <div className="flex items-baseline gap-[1cqw] font-[family-name:var(--font-gowun-batang)]">
               <span className="text-[3.2cqw]">故</span>
               <span className="text-[5.4cqw] font-bold text-[#7a5322]">
-                {DECEASED_NAME}
+                {profile.name}
               </span>
               <span className="text-[3.2cqw]">님</span>
             </div>
             <p className="mt-[0.6cqh] text-[2.3cqw] tracking-wide text-[#9c7b4a]">
-              {BIRTH_DATE} - {DEATH_DATE}
+              {profile.birth_date} - {profile.death_date}
             </p>
           </div>
         </div>
 
         {/* Memories grid */}
         <div className="absolute left-1/2 top-[22cqh] grid w-[74cqw] -translate-x-1/2 grid-cols-2 gap-x-[4.5cqw] gap-y-[3.2cqh]">
-          {MEMORIES.map((m) => (
+          {memories.map((m, i) => (
             <div
-              key={m.date}
+              key={i}
+              data-nav-item
+              tabIndex={-1}
               className="rounded-2xl bg-white/40 p-[1.7cqw] shadow-sm"
             >
               <div className="relative aspect-[796/500] w-full overflow-hidden rounded-xl">

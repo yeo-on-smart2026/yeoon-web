@@ -25,3 +25,10 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* 모찌 컨트롤러(키보드) 내비게이션 포커스 표시 — useKeyboardNav.ts 참조 */
+[data-nav-item].kbnav-focused {
+  outline: 3px solid #c9974f;
+  outline-offset: 2px;
+  border-radius: 0.75rem;
+}
