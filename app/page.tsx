@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import PageFrame from "@/components/PageFrame";
+import SplashScreen from "@/components/SplashScreen";
 import {
   DECEASED_NAME,
   BIRTH_DATE,
@@ -11,6 +12,8 @@ import {
 export default function Home() {
   return (
     <PageFrame>
+        <SplashScreen />
+
         {/* Header */}
         <div className="absolute left-1/2 top-[11.5cqh] flex -translate-x-1/2 flex-col items-center text-center text-[#6b4a26]">
           <div className="flex items-baseline gap-[1.2cqw] font-[family-name:var(--font-gowun-batang)]">
@@ -52,13 +55,13 @@ export default function Home() {
             <ImageIcon className="h-[3.1cqw] w-[3.1cqw]" />
             추억 만나기
           </Link>
-          <button
-            type="button"
+          <Link
+            href="/memorial"
             className="flex items-center whitespace-nowrap gap-[1cqw] rounded-2xl border border-[#d3ba93] bg-white px-[5cqw] py-[1.3cqh] text-[2.7cqw] font-medium text-[#8a6a3d] shadow-sm"
           >
             <MessageIcon className="h-[3.1cqw] w-[3.1cqw]" />
             추모 메세지
-          </button>
+          </Link>
         </div>
     </PageFrame>
   );
