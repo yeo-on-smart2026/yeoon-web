@@ -34,7 +34,7 @@ export default async function Home() {
           <p className="mt-[1.4cqh] text-[2.6cqw] tracking-wide text-[#9c7b4a]">
             {birth_date} - {death_date}
           </p>
-          <p className="mt-[3cqh] flex items-baseline gap-[0.6cqw] text-[2.8cqw] text-[#5b4636]">
+          <p className="mt-[3cqh] flex items-baseline gap-[0.6cqw] text-[2.8cqw] text-[#5b4636] font-[family-name:var(--font-gowun-batang)]">
             <span className="text-[4.4cqw] leading-none text-[#a9825a]">&ldquo;</span>
             <span>{quote}</span>
             <span className="text-[4.4cqw] leading-none text-[#a9825a]">&rdquo;</span>
