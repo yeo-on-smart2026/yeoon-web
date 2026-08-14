@@ -5,6 +5,8 @@ import SplashScreen from "@/components/SplashScreen";
 import WaitingScreen from "@/components/WaitingScreen";
 import { getActiveProfile } from "@/lib/queries";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const profile = await getActiveProfile();
 
