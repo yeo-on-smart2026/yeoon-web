@@ -16,7 +16,7 @@ export default async function MemoriesPage() {
         {/* Header */}
         <div className="absolute right-[13cqw] top-[7cqh] flex w-[55cqw] items-center gap-[3cqw] rounded-2xl bg-white/40 px-[3cqw] py-[1.6cqh] shadow-sm">
           <div className="relative h-[13cqw] w-[13cqw] shrink-0 overflow-hidden rounded-xl">
-            <Image src="/memory1.png" alt="" fill className="object-cover" />
+            <Image src="/memory1.png" alt="" fill sizes="120px" className="object-cover" />
           </div>
           <div className="flex flex-col text-[#6b4a26]">
             <div className="flex items-baseline gap-[1cqw] font-[family-name:var(--font-gowun-batang)]">
@@ -42,7 +42,7 @@ export default async function MemoriesPage() {
               className="rounded-2xl bg-white/40 p-[1.7cqw] shadow-sm"
             >
               <div className="relative aspect-[796/500] w-full overflow-hidden rounded-xl">
-                <Image src={m.src} alt="" fill className="object-cover" />
+                <Image src={m.src} alt="" fill sizes="280px" className="object-cover" />
               </div>
               <p className="mt-[0.8cqh] text-center text-[1.9cqw] font-semibold text-[#8a6a3d]">
                 {m.date}

@@ -44,6 +44,7 @@ export default function MemorialView({
             src={profile.main_image ?? "/memorial1.png"}
             alt=""
             fill
+            sizes="560px"
             className="object-cover"
             style={{ objectPosition: "center 34%" }}
           />
@@ -129,6 +130,7 @@ export default function MemorialView({
                     src={message.photo}
                     alt=""
                     fill
+                    sizes="500px"
                     className="object-cover"
                   />
                 </div>

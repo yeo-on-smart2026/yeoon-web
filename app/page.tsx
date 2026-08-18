@@ -45,7 +45,7 @@ export default async function Home() {
 
         {/* Plaque */}
         <div className="absolute left-[62%] top-[33cqh] aspect-[1828/1856] w-[77cqw] -translate-x-1/2">
-          <Image src="/memorialPlaque.png" alt="" fill className="object-contain" />
+          <Image src="/memorialPlaque.png" alt="" fill sizes="500px" className="object-contain" />
           <div className="absolute left-[17%] top-[14%] flex w-[36%] flex-col items-center font-[family-name:var(--font-gowun-batang)] text-[#3a2513]">
             <span className="text-[6cqw] font-bold leading-none">故</span>
             {[...name].map((char, i) => (
