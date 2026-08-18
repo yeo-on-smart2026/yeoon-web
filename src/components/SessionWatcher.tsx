@@ -15,20 +15,23 @@ export default function SessionWatcher() {
     <div
       style={{
         position: "fixed",
+        top: 0,
         left: 0,
-        right: 0,
-        bottom: 0,
-        zIndex: 9999,
-        fontSize: "11px",
-        lineHeight: 1.4,
-        padding: "4px 8px",
-        background: "rgba(0,0,0,0.75)",
-        color: "#fff",
+        zIndex: 999999,
+        fontSize: "20px",
+        fontWeight: 700,
+        lineHeight: 1.5,
+        padding: "10px 14px",
+        background: "#ff0000",
+        color: "#ffffff",
         fontFamily: "monospace",
         pointerEvents: "none",
+        border: "4px solid yellow",
       }}
     >
-      realtime: {status} · last: {lastEvent}
+      DEBUG realtime: {status}
+      <br />
+      last: {lastEvent}
     </div>
   );
 }
