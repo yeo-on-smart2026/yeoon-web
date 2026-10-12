@@ -21,7 +21,7 @@ export type MemorialMessage = {
 export type Memory = {
   date: string;
   title: string;
-  desc: string[];
+  description: string[];
   src: string;
 };
 
@@ -62,7 +62,7 @@ export async function getMessages(profileId: string): Promise<MemorialMessage[]>
 export async function getMemories(profileId: string): Promise<Memory[]> {
   const { data, error } = await supabase
     .from("memories")
-    .select("date, title, desc, src")
+    .select("date, title, description, src")
     .eq("profile_id", profileId)
     .order("sort", { ascending: true });
 

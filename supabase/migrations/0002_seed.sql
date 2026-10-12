@@ -69,7 +69,7 @@ insert into memorial_messages (profile_id, date, relation, title, body, photo, s
 
 delete from memories where profile_id = 'stone01';
 
-insert into memories (profile_id, date, title, desc, src, sort) values
+insert into memories (profile_id, date, title, description, src, sort) values
 ('stone01', '2023.05.03', '우리가족 단체사진', ARRAY['우리아빠 퇴원했던 날!', '밝은 웃음 보니까 너무 행복해']::text[], '/memory2.png', 0),
 ('stone01', '2022.10.08', '행복해요 당신덕에', ARRAY['칠순잔치 우리 남편 잘 웃고 다정하시네', '사랑해요']::text[], '/memory3.png', 1),
 ('stone01', '2019.11.10', '도율이가 그렇게 좋아?', ARRAY['아빠 도율이 벌써 초등학생이야', '할아버지보고싶다고 같이 왔어 사랑해']::text[], '/memory4.png', 2),

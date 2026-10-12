@@ -51,9 +51,9 @@ export default async function MemoriesPage() {
                 {m.title}
               </p>
               <p className="mt-[0.3cqh] text-center text-[1.55cqw] leading-snug text-[#9c8065]">
-                {m.desc[0]}
+                {m.description[0]}
                 <br />
-                {m.desc[1]}
+                {m.description[1]}
               </p>
             </div>
           ))}
